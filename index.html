@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Documents Studio</title>
+    <meta
+      name="description"
+      content="Pixel Documents Studio — a custom design and document workspace for creating, editing, and exporting content."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-wrap">
+          <div class="brand-icon">P</div>
+          <div>
+            <div class="brand-name">Pixel</div>
+            <div class="brand-sub">Documents Studio</div>
+          </div>
+        </div>
+
+        <nav class="side-menu">
+          <button class="nav-item active">
+            <span>✦</span>
+            Workspace
+          </button>
+          <button class="nav-item">
+            <span>▣</span>
+            Templates
+          </button>
+          <button class="nav-item">
+            <span>◫</span>
+            Assets
+          </button>
+          <button class="nav-item">
+            <span>⇩</span>
+            Export
+          </button>
+        </nav>
+
+        <div class="quick-actions">
+          <button class="primary-btn" id="newProjectBtn">New Project</button>
+          <button class="secondary-btn" id="saveProjectBtn">Save</button>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div class="header-left">
+            <div class="project-pill">Project: Marketing Brief</div>
+          </div>
+
+          <div class="header-center">
+            <div class="tool-group compact">
+              <button class="tool-btn" data-command="bold"><strong>B</strong></button>
+              <button class="tool-btn" data-command="italic"><em>I</em></button>
+              <button class="tool-btn" data-command="underline"><span class="under">U</span></button>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="tool-group compact">
+              <button class="tool-btn" data-align="left">☰</button>
+              <button class="tool-btn" data-align="center">≡</button>
+              <button class="tool-btn" data-align="right">☱</button>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <button class="ghost-btn" id="downloadBtn">Download</button>
+            <button class="primary-btn" id="printBtn">Print</button>
+          </div>
+        </header>
+
+        <section class="studio-layout">
+          <aside class="tools-panel card">
+            <div class="panel-section">
+              <h3>Pages</h3>
+              <div class="size-grid">
+                <button class="size-btn active" data-size="a4">A4</button>
+                <button class="size-btn" data-size="letter">Letter</button>
+                <button class="size-btn" data-size="social">Social</button>
+                <button class="size-btn" data-size="banner">Banner</button>
+              </div>
+            </div>
+
+            <div class="panel-section">
+              <h3>Text</h3>
+              <div class="tool-stack">
+                <label class="input-group">
+                  <span>Font size</span>
+                  <input type="range" id="fontSizeRange" min="12" max="64" value="20" />
+                </label>
+                <label class="input-group">
+                  <span>Text color</span>
+                  <input type="color" id="textColorPicker" value="#1f2937" />
+                </label>
+              </div>
+            </div>
+
+            <div class="panel-section">
+              <h3>Elements</h3>
+              <div class="action-grid">
+                <button class="action-btn" data-add="text">+ Text</button>
+                <button class="action-btn" data-add="shape">+ Shape</button>
+                <button class="action-btn" data-add="image">+ Image</button>
+              </div>
+            </div>
+
+            <div class="panel-section">
+              <h3>Palette</h3>
+              <div class="palette">
+                <button class="color-swatch active" data-theme="#6d5efc" style="--swatch:#6d5efc"></button>
+                <button class="color-swatch" data-theme="#ff5d8f" style="--swatch:#ff5d8f"></button>
+                <button class="color-swatch" data-theme="#1ec8a5" style="--swatch:#1ec8a5"></button>
+                <button class="color-swatch" data-theme="#f7b801" style="--swatch:#f7b801"></button>
+                <button class="color-swatch" data-theme="#2b6cf6" style="--swatch:#2b6cf6"></button>
+                <button class="color-swatch" data-theme="#fd7e14" style="--swatch:#fd7e14"></button>
+              </div>
+            </div>
+
+            <input type="file" id="imageUpload" accept="image/*" hidden />
+          </aside>
+
+          <div class="stage-panel card">
+            <div class="stage-header">
+              <div class="stage-title">Canvas</div>
+              <div class="status-dot">Live</div>
+            </div>
+
+            <div class="canvas-wrap">
+              <div class="document" id="documentCanvas">
+                <div class="page" id="editorPage" contenteditable="true">
+                  <h1>Welcome to Pixel Documents Studio</h1>
+                  <p>
+                    Design, write, shape ideas, and export polished projects with a modern
+                    visual workspace built for creators.
+                  </p>
+                  <div class="mini-card">
+                    <h3>Launch Campaign</h3>
+                    <p>Creative brief · content plan · brand toolkit</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="properties-panel card">
+            <div class="panel-section">
+              <h3>Inspector</h3>
+              <div class="inspector-item">
+                <span>Canvas</span>
+                <strong id="pageSizeLabel">A4</strong>
+              </div>
+              <div class="inspector-item">
+                <span>Theme</span>
+                <strong id="themeLabel">Violet</strong>
+              </div>
+            </div>
+
+            <div class="panel-section">
+              <h3>Quick actions</h3>
+              <ul class="property-list">
+                <li>Auto-save enabled</li>
+                <li>GitHub Pages ready</li>
+                <li>Custom themes included</li>
+              </ul>
+            </div>
+
+            <div class="panel-section export-box">
+              <h3>Export</h3>
+              <button class="secondary-btn block" id="jsonExportBtn">Export JSON</button>
+              <button class="ghost-btn block" id="resetBtn">Reset Layout</button>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast">Saved</div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
